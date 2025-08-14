@@ -41,10 +41,7 @@ export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.product) return;
-    const data = new FormData();
-    Object.entries(form).forEach(([key, value]) => {
-      if (value) data.append(key, value);
-    });
+    const data = { ...form };
     if (editingItem) {
       await saveItem(editingItem.id, data);
     } else {

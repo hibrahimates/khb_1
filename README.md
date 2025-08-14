@@ -6,15 +6,29 @@ Bu proje, yüklenicilerden bina kullanım kılavuzu için gerekli bilgi ve belge
 
 - Ürün adı, marka/model, bakım firması ve iletişim bilgilerini içeren kayıt formu
 - Dosya yükleyebilme ve yüklenen belgeyi indirme
-- Kayıtların bulutta saklanması için bir API (`VITE_API_URL`)
+- Kayıtların Firebase Firestore ve Storage'da saklanması
 - Kolay takip için tablo görünümü
 - Tüm kayıtları Word formatında dışa aktarma
 - Eklenen kayıtları düzenleyebilme ve silebilme
+- Firebase Authentication ile giriş/kayıt
 
 ## Kurulum
 
 ```bash
 npm install
+```
+
+### Ortam Değişkenleri
+
+`.env` dosyası oluşturup aşağıdaki Firebase bilgilerini ekleyin:
+
+```
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_STORAGE_BUCKET=...
+VITE_FIREBASE_MESSAGING_SENDER_ID=...
+VITE_FIREBASE_APP_ID=...
 ```
 
 ### Geliştirme Sunucusu

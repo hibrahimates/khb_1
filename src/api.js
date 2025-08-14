@@ -21,3 +21,12 @@ export async function deleteItem(id) {
   });
   if (!res.ok) throw new Error('Failed to delete item');
 }
+
+export async function updateItem(id, formData) {
+  const res = await fetch(`${API_URL}/items/${id}`, {
+    method: 'PUT',
+    body: formData,
+  });
+  if (!res.ok) throw new Error('Failed to update item');
+  return res.json();
+}

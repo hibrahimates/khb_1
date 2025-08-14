@@ -6,9 +6,10 @@ Bu proje, yüklenicilerden bina kullanım kılavuzu için gerekli bilgi ve belge
 
 - Ürün adı, marka/model, bakım firması ve iletişim bilgilerini içeren kayıt formu
 - Dosya yükleyebilme ve yüklenen belgeyi indirme
-- Kayıtların bulutta saklanması için bir API (\`VITE_API_URL\`)
+- Kayıtların bulutta saklanması için bir API (`VITE_API_URL`)
 - Kolay takip için tablo görünümü
 - Tüm kayıtları Word formatında dışa aktarma
+- Eklenen kayıtları düzenleyebilme ve silebilme
 
 ## Kurulum
 
@@ -37,3 +38,4 @@ https://<kullanici-adi>.github.io/khb_1/
 ## Lisans
 
 GPL lisansı ile yayınlanmıştır.
+

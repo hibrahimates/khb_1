@@ -1,7 +1,7 @@
 import React from 'react';
 import { exportDoc } from '../exportDoc';
 
-export default function ManualTable({ items, removeItem }) {
+export default function ManualTable({ items, removeItem, editItem }) {
   if (!items.length) {
     return <p className="text-sm">Henüz veri eklenmedi.</p>;
   }
@@ -24,6 +24,7 @@ export default function ManualTable({ items, removeItem }) {
             <th className="p-2 border">İletişim</th>
             <th className="p-2 border">Notlar</th>
             <th className="p-2 border">Belge</th>
+            <th className="p-2 border">Düzenle</th>
             <th className="p-2 border">Sil</th>
           </tr>
         </thead>
@@ -44,6 +45,11 @@ export default function ManualTable({ items, removeItem }) {
                 ) : (
                   'Yok'
                 )}
+              </td>
+              <td className="p-2 border text-center">
+                <button onClick={() => editItem(item)} className="text-blue-600">
+                  Düzenle
+                </button>
               </td>
               <td className="p-2 border text-center">
                 <button onClick={() => removeItem(item.id)} className="text-red-600">

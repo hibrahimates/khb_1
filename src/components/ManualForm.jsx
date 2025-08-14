@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-export default function ManualForm({ addItem }) {
+export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit }) {
   const initial = {
     discipline: '',
     product: '',
@@ -11,6 +11,22 @@ export default function ManualForm({ addItem }) {
     file: null,
   };
   const [form, setForm] = useState(initial);
+
+  useEffect(() => {
+    if (editingItem) {
+      setForm({
+        discipline: editingItem.discipline || '',
+        product: editingItem.product || '',
+        brandModel: editingItem.brandModel || '',
+        maintenanceCompany: editingItem.maintenanceCompany || '',
+        contact: editingItem.contact || '',
+        notes: editingItem.notes || '',
+        file: null,
+      });
+    } else {
+      setForm(initial);
+    }
+  }, [editingItem]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +45,11 @@ export default function ManualForm({ addItem }) {
     Object.entries(form).forEach(([key, value]) => {
       if (value) data.append(key, value);
     });
-    await addItem(data);
+    if (editingItem) {
+      await saveItem(editingItem.id, data);
+    } else {
+      await addItem(data);
+    }
     setForm(initial);
   };
 
@@ -107,9 +127,20 @@ export default function ManualForm({ addItem }) {
             <input id="file" type="file" onChange={handleFile} />
           </div>
         </div>
-        <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
-          Ekle
-        </button>
+        <div className="flex gap-2">
+          {editingItem && (
+            <button
+              type="button"
+              onClick={cancelEdit}
+              className="bg-gray-500 text-white px-4 py-2 rounded"
+            >
+              Vazgeç
+            </button>
+          )}
+          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+            {editingItem ? 'Kaydet' : 'Ekle'}
+          </button>
+        </div>
       </form>
     );
   }

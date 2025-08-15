@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 
 export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit }) {
   const initial = {
@@ -9,8 +9,10 @@ export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit 
     contact: '',
     notes: '',
     file: null,
+    fileUrl: '',
   };
   const [form, setForm] = useState(initial);
+  const fileRef = useRef(null);
 
   useEffect(() => {
     if (editingItem) {
@@ -22,9 +24,11 @@ export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit 
         contact: editingItem.contact || '',
         notes: editingItem.notes || '',
         file: null,
+        fileUrl: editingItem.fileUrl || '',
       });
     } else {
       setForm(initial);
+      if (fileRef.current) fileRef.current.value = '';
     }
   }, [editingItem]);
 
@@ -48,6 +52,7 @@ export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit 
       await addItem(data);
     }
     setForm(initial);
+    if (fileRef.current) fileRef.current.value = '';
   };
 
   return (
@@ -121,7 +126,7 @@ export default function ManualForm({ addItem, editingItem, saveItem, cancelEdit 
         </div>
         <div className="flex flex-col md:col-span-2">
           <label htmlFor="file" className="text-sm font-medium">Belge</label>
-          <input id="file" type="file" onChange={handleFile} />
+          <input id="file" name="file" type="file" onChange={handleFile} ref={fileRef} />
         </div>
       </div>
       <div className="flex gap-2">

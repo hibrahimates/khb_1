@@ -33,6 +33,10 @@ Derleme çıktısı `docs` klasörüne alınır. GitHub Pages üzerinden ön izl
 https://<kullanici-adi>.github.io/khb_1/
 ```
 
+## Mini Tetris Oyunu
+
+Depoya örnek olarak basit bir tek elle oynanabilir Tetris oyunu eklendi. `tetris.html` dosyasını tarayıcınızda açarak oyunu deneyebilirsiniz. Dokunarak döndürün, yatay sürükleyerek hareket ettirin ve aşağı doğru sürükleyerek parçayı bırakın.
+
 ## Lisans
 
 GPL lisansı ile yayınlanmıştır.

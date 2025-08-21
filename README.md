@@ -1,42 +1,23 @@
-# Bina Kullanım Kılavuzu Toplama Uygulaması
+# Mini Tetris
 
-Bu proje, yüklenicilerden bina kullanım kılavuzu için gerekli bilgi ve belgeleri toplamak amacıyla geliştirilmiş basit bir web uygulamasıdır. React 18 ve Vite kullanılarak oluşturulmuştur ve TailwindCSS ile stillendirilmiştir.
+Basit, tarayıcı tabanlı küçük bir Tetris oyunu.
 
-## Özellikler
+## Nasıl Çalıştırılır
 
-- Ürün adı, marka/model, bakım firması ve iletişim bilgilerini içeren kayıt formu
-- Dosya yükleyebilme ve yüklenen belgeyi indirme
-- Kayıtların bulutta saklanması için bir API (\`VITE_API_URL\`)
-- Kolay takip için tablo görünümü
+`tetris.html` dosyasını herhangi bir modern tarayıcıda açın.
 
-## Kurulum
+### Kontroller
 
-```bash
-npm install
-```
+- Sol/sağ ok tuşları ile hareket edin
+- Aşağı ok tuşu ile parçayı hızlı düşürün
+- `Q` ile sola, `W` veya yukarı ok tuşu ile sağa döndürün
+- Dokunmatik ekranlarda:
+  - Dokunarak döndürün
+  - Yatay sürükleyerek hareket ettirin
+  - Aşağı sürükleyerek bırakın
 
-### Geliştirme Sunucusu
-
-```bash
-npm run dev
-```
-
-### Üretim İçin Derleme
-
-```bash
-npm run build
-```
-
-Derleme çıktısı `docs` klasörüne alınır. GitHub Pages üzerinden ön izleme yapmak için depo ayarlarından `main` dalı ve `docs` klasörünü seçebilirsiniz. Sayfa yayınlandıktan sonra şu adreste ulaşılabilir:
-
-```
-https://<kullanici-adi>.github.io/khb_1/
-```
-
-## Mini Tetris Oyunu
-
-Depoya örnek olarak basit bir tek elle oynanabilir Tetris oyunu eklendi. `tetris.html` dosyasını tarayıcınızda açarak oyunu deneyebilirsiniz. Dokunarak döndürün, yatay sürükleyerek hareket ettirin ve aşağı doğru sürükleyerek parçayı bırakın.
+Oyun bittiğinde ekranda beliren "Play Again" düğmesi ile yeniden başlayabilirsiniz.
 
 ## Lisans
 
-GPL lisansı ile yayınlanmıştır.
+Bu proje GPL lisansı ile yayınlanmıştır.

@@ -2,6 +2,10 @@ const canvas = document.getElementById('game');
 const context = canvas.getContext('2d');
 context.scale(20, 20);
 
+const overlay = document.getElementById('game-over');
+const playAgainButton = document.getElementById('play-again');
+let gameOver = false;
+
 const COLS = 10;
 const ROWS = 20;
 
@@ -133,9 +137,8 @@ function playerReset() {
   player.pos.y = 0;
   player.pos.x = ((COLS / 2) | 0) - ((player.matrix[0].length / 2) | 0);
   if (collide(arena, player)) {
-    arena.forEach(row => row.fill(0));
-    player.score = 0;
-    updateScore();
+    gameOver = true;
+    overlay.style.display = 'flex';
   }
 }
 
@@ -176,7 +179,9 @@ function update(time = 0) {
     playerDrop();
   }
   draw();
-  requestAnimationFrame(update);
+  if (!gameOver) {
+    requestAnimationFrame(update);
+  }
 }
 
 function draw() {
@@ -225,17 +230,27 @@ canvas.addEventListener('touchend', e => {
 });
 
 window.addEventListener('keydown', event => {
-  if (event.keyCode === 37) {
+  if (event.key === 'ArrowLeft') {
     playerMove(-1);
-  } else if (event.keyCode === 39) {
+  } else if (event.key === 'ArrowRight') {
     playerMove(1);
-  } else if (event.keyCode === 40) {
+  } else if (event.key === 'ArrowDown') {
     playerDrop();
-  } else if (event.keyCode === 81) {
+  } else if (event.key === 'q' || event.key === 'Q') {
     playerRotate(-1);
-  } else if (event.keyCode === 38 || event.keyCode === 87) {
+  } else if (event.key === 'ArrowUp' || event.key === 'w' || event.key === 'W') {
     playerRotate(1);
   }
+});
+
+playAgainButton.addEventListener('click', () => {
+  overlay.style.display = 'none';
+  arena.forEach(row => row.fill(0));
+  player.score = 0;
+  updateScore();
+  gameOver = false;
+  playerReset();
+  update();
 });
 
 playerReset();
